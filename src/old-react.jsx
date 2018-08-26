@@ -133,50 +133,50 @@ var AddPlayerForm = React.createClass({
 // };
 
 var Application = React.createClass({
-  propTypes: {
-    title: React.PropTypes.string,
-    initialPlayers: React.PropTypes.arrayOf(React.PropTypes.shape({
-      name: React.PropTypes.string.isRequired,
-      score: React.PropTypes.number.isRequred,
-      id: React.PropTypes.number.isRequred,
-    })).isRequired,
-  },
+  // propTypes: {
+  //   title: React.PropTypes.string,
+  //   initialPlayers: React.PropTypes.arrayOf(React.PropTypes.shape({
+  //     name: React.PropTypes.string.isRequired,
+  //     score: React.PropTypes.number.isRequred,
+  //     id: React.PropTypes.number.isRequred,
+  //   })).isRequired,
+  // },
 
-  getDefaultProps: function() {
-    return {
-      title: "Scoreboard"
-    }
-  },
+  // getDefaultProps: function() {
+  //   return {
+  //     title: "Scoreboard"
+  //   }
+  // },
 
-  getInitialState: function() {
-    return {
-      players: this.props.initialPlayers,
-    };
-  },
+  // getInitialState: function() {
+  //   return {
+  //     players: this.props.initialPlayers,
+  //   };
+  // },
 
-  onScoreChange: function(index, delta) {
-//    console.log('onScoreChange', index, delta);
-    this.state.players[index].score += delta;
-    this.setState(this.state);
-  },
+//   onScoreChange: function(index, delta) {
+// //    console.log('onScoreChange', index, delta);
+//     this.state.players[index].score += delta;
+//     this.setState(this.state);
+//   },
 
-  onPlayerAdd: function(name) {
-    console.log('Player added', name);
-    this.state.players.push({
-      name: name,
-      score: 0,
-      id: nextId
-    });
+  // onPlayerAdd: function(name) {
+  //   console.log('Player added', name);
+  //   this.state.players.push({
+  //     name: name,
+  //     score: 0,
+  //     id: nextId
+  //   });
+  //
+  //   nextId += 1;
+  //   this.setState(this.state);
+  // },
 
-    nextId += 1;
-    this.setState(this.state);
-  },
-
-  onRemovePlayer: function(index) {
-//    console.log('Remove', index);
-    this.state.players.splice(index, 1);
-    this.setState(this.state);
-  },
+//   onRemovePlayer: function(index) {
+// //    console.log('Remove', index);
+//     this.state.players.splice(index, 1);
+//     this.setState(this.state);
+//   },
 
   render: function() {
     return(
