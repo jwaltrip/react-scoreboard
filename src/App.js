@@ -9,13 +9,13 @@ Header - stateless
 Stats - stateless
 Player - stateless
 Counter - stateless
-AddPlayterForm - stateful
+AddPlayerForm - stateful
 
  */
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="scoreboard">
 
       </div>
     );

@@ -80,20 +80,20 @@ Stats.propTypes = {
   players: React.PropTypes.array.isRequired,
 };
 
-// Header component
-function Header(props) {
-  return (
-    <div className="header">
-      <Stats players={props.players} />
-      <h1>{props.title}</h1>
-    </div>
-  );
-}
-// Header propTypes
-Header.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  players: React.PropTypes.array.isRequired,
-};
+// // Header component
+// function Header(props) {
+//   return (
+//     <div className="header">
+//       <Stats players={props.players} />
+//       <h1>{props.title}</h1>
+//     </div>
+//   );
+// }
+// // Header propTypes
+// Header.propTypes = {
+//   title: React.PropTypes.string.isRequired,
+//   players: React.PropTypes.array.isRequired,
+// };
 
 function Counter(props) {
   return (
