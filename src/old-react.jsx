@@ -1,23 +1,23 @@
-// Static players array to test the Player component
-let PLAYERS = [
-  {
-    name: "Jake Waltrip",
-    score: 31,
-    id: 1,
-  },
-  {
-    name: "Laurie Hansson",
-    score: 100,
-    id: 2,
-  },
-  {
-    name: "Bob Saget",
-    score: 150,
-    id: 3,
-  },
-];
-
-var nextId = 4;
+// // Static players array to test the Player component
+// let PLAYERS = [
+//   {
+//     name: "Jake Waltrip",
+//     score: 31,
+//     id: 1,
+//   },
+//   {
+//     name: "Laurie Hansson",
+//     score: 100,
+//     id: 2,
+//   },
+//   {
+//     name: "Bob Saget",
+//     score: 150,
+//     id: 3,
+//   },
+// ];
+//
+// var nextId = 4;
 
 var AddPlayerForm = React.createClass({
   propTypes: {

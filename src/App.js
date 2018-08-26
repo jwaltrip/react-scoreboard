@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './DATA'; // initial scoreboard data + global var to keep track of ID's
 
 /*
 List of components used:
@@ -7,8 +8,8 @@ List of components used:
   [] App - stateful
   [x] Header - stateless
   [x] Stats - stateless
-  [] Player - stateless
-  [] Counter - stateless
+  [x] Player - stateless
+  [x] Counter - stateless
   [] AddPlayerForm - stateful
 
  */
