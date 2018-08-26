@@ -2,15 +2,30 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class AddPlayerForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: ""
+    };
+    this.onNameChange = this.onNameChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  // onNameChange(e) {
+  //   // console.log('onNameChange', e.target.value);
+  //   this.setState({ name: e.target.value });
+  // }
+
   onNameChange(e) {
-    console.log('onNameChange', e.target.value);
-    this.setState({ name: e.target.value });
+    const newText = e.target.value;
+    this.setState({ name: newText });
   }
 
   onSubmit(e) {
-    e.preventDefault();
+    const name = this.state.name;
 
-    this.props.onAdd(this.state.name);
+    e.preventDefault();
+    this.props.onAdd(name);
     this.setState({ "name": "" });
   }
 

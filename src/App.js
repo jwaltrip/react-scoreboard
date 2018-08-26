@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
-import './DATA';
+import InitialData from './DATA';
 import Header from "./components/Header";
 import Player from "./components/Player";
+import AddPlayerForm from "./components/AddPlayerForm";
 
 /*
 List of components used:
@@ -13,14 +14,30 @@ List of components used:
   [x] Stats - stateless
   [x] Player - stateless
   [x] Counter - stateless
-  [] AddPlayerForm - stateful
+  [x] AddPlayerForm - stateful
 
  */
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: this.props.initialPlayers
+      players: [
+        {
+          name: "Jake Waltrip",
+          score: 31,
+          id: 1,
+        },
+        {
+          name: "Laurie Hansson",
+          score: 100,
+          id: 2,
+        },
+        {
+          name: "Bob Saget",
+          score: 150,
+          id: 3,
+        },
+      ]
     };
   }
 
@@ -34,13 +51,22 @@ class App extends Component {
   onPlayerAdd(name) {
     console.log('Player added', name);
     // TODO refactor this to create a new state, then set state (rather than modify old state and update
-    this.state.players.push({
+    // this.state.players.push({
+    //   name: name,
+    //   score: 0,
+    //   id: InitialData.nextId
+    // });
+
+    // refactor of update state
+    const newPlayers = [...this.state.players, {
       name: name,
       score: 0,
-      id: nextId
-    });
-    nextId += 1;
-    this.setState(this.state);
+      id: InitialData.nextId
+    }];
+
+    InitialData.nextId += 1;
+    // this.setState(this.state);
+    this.setState({ newPlayers });
   }
 
   onRemovePlayer(index) {
@@ -61,16 +87,17 @@ class App extends Component {
           {this.state.players.map((player, index) => {
             return (
               <Player
-                onRemove={()=> {this.onRemovePlayer(index).bind(this)}}
-                onScoreChange={(delta)=> {this.onScoreChange(index, delta).bind(this)}}
+                onRemove={()=> {this.onRemovePlayer(index)}}
+                onScoreChange={(delta)=> {this.onScoreChange(index, delta)}}
                 name={player.name}
                 score={player.score}
                 key={player.id}
               />
             );
-          }).bind(this)}
+          })}
         </div>
         // TODO add AddPlayerForm component
+        <AddPlayerForm onAdd={this.onPlayerAdd} />
       </div>
     );
   }
