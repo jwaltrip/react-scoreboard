@@ -1,5 +1,6 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-// need to import Stats component
+import Stats from './Stats';
 
 // Header component
 const Header = (props) => {
