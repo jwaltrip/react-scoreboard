@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2337b820-69a4-4266-a204-96c153bc7be1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AddPlayerForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AddPlayerForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/old-react.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/old-react.jsx" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -29,7 +28,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="App.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/App.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="366">
@@ -41,9 +40,16 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="AddPlayerForm.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="AddPlayerForm.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/AddPlayerForm.js">
-              <provider selected="true" editor-type-id="text-editor" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="308">
+                  <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+                  <folding>
+                    <element signature="e#0#41#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
             </entry>
           </file>
           <file leaf-file-name="Counter.js" pinned="false" current-in-tab="false">
@@ -113,8 +119,8 @@
           <file leaf-file-name="old-react.jsx" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/old-react.jsx">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="179" lean-forward="true" selection-start-line="179" selection-end-line="179" />
+                <state relative-caret-position="-2813">
+                  <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="42" selection-end-column="7" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
@@ -148,8 +154,9 @@
         <option value="$PROJECT_DIR$/src/components/Player.js" />
         <option value="$PROJECT_DIR$/src/DATA.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
-        <option value="$PROJECT_DIR$/src/old-react.jsx" />
         <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/src/components/AddPlayerForm.js" />
+        <option value="$PROJECT_DIR$/src/old-react.jsx" />
       </list>
     </option>
   </component>
@@ -238,12 +245,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1535303339490</updated>
-      <workItem from="1535303341670" duration="4152000" />
+      <workItem from="1535303341670" duration="4546000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4152000" />
+    <option name="totallyTimeSpent" value="4546000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1053" extended-state="6" />
@@ -320,9 +327,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AddPlayerForm.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -380,6 +384,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="69" column="14" lean-forward="true" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/old-react.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4120">
@@ -387,10 +401,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
+    <entry file="file://$PROJECT_DIR$/src/components/AddPlayerForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="69" column="14" lean-forward="true" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+        <state relative-caret-position="308">
+          <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
