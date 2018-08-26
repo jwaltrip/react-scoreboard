@@ -4,12 +4,12 @@ import './App.css';
 /*
 List of components used:
 
-App - stateful
-Header - stateless
-Stats - stateless
-Player - stateless
-Counter - stateless
-AddPlayerForm - stateful
+  [] App - stateful
+  [x] Header - stateless
+  [x] Stats - stateless
+  [] Player - stateless
+  [] Counter - stateless
+  [] AddPlayerForm - stateful
 
  */
 class App extends Component {

@@ -54,31 +54,31 @@ var AddPlayerForm = React.createClass({
   },
 });
 
-function Stats(props) {
-  var totalPlayers = props.players.length;
-  var totalPoints = props.players.reduce(function(total, player){
-    return total + player.score;
-  }, 0);
-
-  return (
-    <table className="stats">
-      <tbody>
-      <tr>
-        <td>Players:</td>
-        <td>{totalPlayers}</td>
-      </tr>
-      <tr>
-        <td>Total Points:</td>
-        <td>{totalPoints}</td>
-      </tr>
-      </tbody>
-    </table>
-  );
-}
-
-Stats.propTypes = {
-  players: React.PropTypes.array.isRequired,
-};
+// function Stats(props) {
+//   var totalPlayers = props.players.length;
+//   var totalPoints = props.players.reduce(function(total, player){
+//     return total + player.score;
+//   }, 0);
+//
+//   return (
+//     <table className="stats">
+//       <tbody>
+//       <tr>
+//         <td>Players:</td>
+//         <td>{totalPlayers}</td>
+//       </tr>
+//       <tr>
+//         <td>Total Points:</td>
+//         <td>{totalPoints}</td>
+//       </tr>
+//       </tbody>
+//     </table>
+//   );
+// }
+//
+// Stats.propTypes = {
+//   players: React.PropTypes.array.isRequired,
+// };
 
 // // Header component
 // function Header(props) {
@@ -111,26 +111,26 @@ Counter.propTypes = {
 }
 
 // Player component
-function Player(props) {
-  return (
-    <div className="player">
-      <div className="player-name">
-        <a className="remove-player" onClick={props.onRemove}>✖</a>
-        {props.name}
-      </div>
-      <div className="player-score">
-        <Counter score={props.score} onChange={props.onScoreChange} />
-      </div>
-    </div>
-  );
-}
-// Player propTypes
-Player.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  score: React.PropTypes.number.isRequired,
-  onScoreChange: React.PropTypes.func.isRequired,
-  onRemove: React.PropTypes.func.isRequired,
-};
+// function Player(props) {
+//   return (
+//     <div className="player">
+//       <div className="player-name">
+//         <a className="remove-player" onClick={props.onRemove}>✖</a>
+//         {props.name}
+//       </div>
+//       <div className="player-score">
+//         <Counter score={props.score} onChange={props.onScoreChange} />
+//       </div>
+//     </div>
+//   );
+// }
+// // Player propTypes
+// Player.propTypes = {
+//   name: React.PropTypes.string.isRequired,
+//   score: React.PropTypes.number.isRequired,
+//   onScoreChange: React.PropTypes.func.isRequired,
+//   onRemove: React.PropTypes.func.isRequired,
+// };
 
 var Application = React.createClass({
   propTypes: {
