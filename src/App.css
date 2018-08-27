@@ -216,3 +216,10 @@ body {
   color: #fafafa;
   cursor: pointer;
 }
+
+.winner-tag {
+  text-align: center;
+  vertical-align: center;
+  color: #66BB6A;
+  padding: 20px 10px 10px 10px;
+}

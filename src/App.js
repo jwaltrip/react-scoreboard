@@ -36,12 +36,50 @@ class App extends Component {
         },
         {
           name: "Wayne Brady",
-          score: 163,
+          score: 35,
           id: 3
         },
-      ]
+      ],
+
+      winner: {
+        id: 3,
+        score: 35,
+        playerArrIndex: 3
+      }
+
+
     };
   }
+
+  updateWinnerBadge = (index) => {
+    const newState = {...this.state};
+
+    // update this.winnerId
+    const updatedScore = newState.players[index].score;
+    const currentWinnerId = newState.winner.id;
+    const currentWinnerScore = newState.winner.score;
+    const currentWinnerArrIdx = newState.winner.playerArrIndex;
+
+    let newWinnerId = currentWinnerId;
+    let newWinnerScore = currentWinnerScore;
+    let newWinnerArrIdx = currentWinnerArrIdx;
+
+    let playerHighestScore = currentWinnerScore;
+    // get highest score player
+    newState.players.forEach((player, idx) => {
+      if (updatedScore >= currentWinnerScore && index === idx) {
+        newWinnerId = player.id;
+        newWinnerScore = player.score;
+        newWinnerArrIdx = idx;
+      }
+    });
+
+    newState.winner.id = newWinnerId;
+    newState.winner.score = newWinnerScore;
+    newState.winner.playerArrIndex = newWinnerArrIdx;
+
+    this.setState(newState);
+  };
 
   // these MUST be arrow functions in order to automatically bind 'this'
   onScoreChange = (index, delta) => {
@@ -49,6 +87,9 @@ class App extends Component {
 
     const newState = {...this.state};
     newState.players[index].score += delta;
+
+    this.updateWinnerBadge(index);
+
     this.setState(newState);
   };
 
@@ -89,6 +130,7 @@ class App extends Component {
                 onScoreChange={(delta)=> {this.onScoreChange(index, delta)}}
                 name={player.name}
                 score={player.score}
+                winner={this.state.winner}
                 key={player.id}
               />
             );
