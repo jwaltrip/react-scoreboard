@@ -49,10 +49,12 @@ class App extends Component {
     console.log('onScoreChange', index, delta);
     // TODO refactor this to create a new state, then set state (rather than modify old state and update)
     //refactor
-    let newScore = this.state.players[index].score;
-    newScore += delta;
+    let newState = [...this.state.players];
+    newState[index].score += delta;
+    // let newScore = this.state.players[index].score;
+    // newScore += delta;
     // this.state.players[index].score += delta;
-    this.setState({ score: newScore });
+    this.setState({ newState });
   };
 
   onPlayerAdd = (name) => {

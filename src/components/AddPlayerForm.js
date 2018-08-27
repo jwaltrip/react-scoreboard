@@ -7,8 +7,6 @@ class AddPlayerForm extends Component {
     this.state = {
       name: ""
     };
-    this.onNameChange = this.onNameChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   // onNameChange(e) {
@@ -16,18 +14,18 @@ class AddPlayerForm extends Component {
   //   this.setState({ name: e.target.value });
   // }
 
-  onNameChange(e) {
+  onNameChange = (e) => {
     const newText = e.target.value;
     this.setState({ name: newText });
-  }
+  };
 
-  onSubmit(e) {
+  onSubmit = (e) => {
     const name = this.state.name;
 
     e.preventDefault();
     this.props.onAdd(name);
     this.setState({ "name": "" });
-  }
+  };
 
   render() {
     return (
