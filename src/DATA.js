@@ -25,4 +25,4 @@ class InitialData {
   }
 }
 
-export default (new InitialData);
+export default (new InitialData());

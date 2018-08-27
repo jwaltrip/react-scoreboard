@@ -39,48 +39,56 @@ class App extends Component {
         },
       ]
     };
+
+    // this.onScoreChange = this.onScoreChange.bind(this);
+    // this.onPlayerAdd = this.onPlayerAdd.bind(this);
+    // this.onRemovePlayer = this.onRemovePlayer.bind(this);
   }
 
-  onScoreChange(index, delta) {
+  onScoreChange = (index, delta) => {
     console.log('onScoreChange', index, delta);
     // TODO refactor this to create a new state, then set state (rather than modify old state and update)
-    this.state.players[index].score += delta;
-    this.setState(this.state);
-  }
+    //refactor
+    let newScore = this.state.players[index].score;
+    newScore += delta;
+    // this.state.players[index].score += delta;
+    this.setState({ score: newScore });
+  };
 
-  onPlayerAdd(name) {
+  onPlayerAdd = (name) => {
     console.log('Player added', name);
     // TODO refactor this to create a new state, then set state (rather than modify old state and update
-    // this.state.players.push({
+    this.state.players.push({
+      name: name,
+      score: 0,
+      id: InitialData.nextId
+    });
+
+    // refactor of update state
+    // const oldPlayers = this.state.players;
+    // const newPlayers = oldPlayers.push({
     //   name: name,
     //   score: 0,
     //   id: InitialData.nextId
     // });
 
-    // refactor of update state
-    const newPlayers = [...this.state.players, {
-      name: name,
-      score: 0,
-      id: InitialData.nextId
-    }];
-
     InitialData.nextId += 1;
-    // this.setState(this.state);
-    this.setState({ newPlayers });
-  }
+    this.setState(this.state);
+    // this.setState({ players: newPlayers });
+  };
 
-  onRemovePlayer(index) {
+  onRemovePlayer = (index) => {
     console.log('Remove player', index);
     // TODO refactor this to create a new state, then set state (rather than modify old state and update
     // remove the index of the player clicked
     this.state.players.splice(index, 1);
     this.setState(this.state);
-  }
+  };
 
   render() {
     return (
       <div className="scoreboard">
-        // title is from default props
+        {/* title is from default props*/}
         <Header title={this.props.title} players={this.state.players}/>
 
         <div className="players">
@@ -96,7 +104,6 @@ class App extends Component {
             );
           })}
         </div>
-        // TODO add AddPlayerForm component
         <AddPlayerForm onAdd={this.onPlayerAdd} />
       </div>
     );
