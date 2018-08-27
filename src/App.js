@@ -16,6 +16,9 @@ List of components used:
   [x] AddPlayerForm - stateful
 
  */
+
+// TODO add a highlight marker of some type to point out the winning player
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -40,6 +43,7 @@ class App extends Component {
     };
   }
 
+  // these MUST be arrow functions in order to automatically bind 'this'
   onScoreChange = (index, delta) => {
     // console.log('onScoreChange', index, delta);
 
@@ -48,6 +52,7 @@ class App extends Component {
     this.setState(newState);
   };
 
+  // these MUST be arrow functions in order to automatically bind 'this'
   onPlayerAdd = (name) => {
     // console.log('Player added', name);
 
@@ -61,6 +66,7 @@ class App extends Component {
     this.setState(newState);
   };
 
+  // these MUST be arrow functions in order to automatically bind 'this'
   onRemovePlayer = (index) => {
     // console.log('Remove player', index);
 

@@ -9,21 +9,19 @@ class AddPlayerForm extends Component {
     };
   }
 
-  // onNameChange(e) {
-  //   // console.log('onNameChange', e.target.value);
-  //   this.setState({ name: e.target.value });
-  // }
-
+  // these MUST be arrow functions in order to automatically bind 'this'
   onNameChange = (e) => {
-    const newText = e.target.value;
-    this.setState({ name: newText });
+    const newName = e.target.value;
+    this.setState({ name: newName });
   };
 
+  // these MUST be arrow functions in order to automatically bind 'this'
   onSubmit = (e) => {
-    const name = this.state.name;
-
     e.preventDefault();
+
+    const name = this.state.name;
     this.props.onAdd(name);
+    // reset new player name entry form back to empty string
     this.setState({ "name": "" });
   };
 
@@ -41,10 +39,6 @@ class AddPlayerForm extends Component {
 
 AddPlayerForm.propTypes = {
   onAdd: PropTypes.func.isRequired
-};
-
-AddPlayerForm.defaultProps = {
-  name: ""
 };
 
 export default AddPlayerForm;
