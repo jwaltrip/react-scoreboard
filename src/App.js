@@ -131,6 +131,8 @@ class App extends Component {
                 name={player.name}
                 score={player.score}
                 winner={this.state.winner}
+                allPlayers={this.state.players}
+                id={player.id}
                 key={player.id}
               />
             );
