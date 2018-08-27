@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
-import InitialData from './DATA';
 import Header from "./components/Header";
 import Player from "./components/Player";
 import AddPlayerForm from "./components/AddPlayerForm";
@@ -24,67 +23,50 @@ class App extends Component {
       players: [
         {
           name: "Jake Waltrip",
+          score: 23,
+          id: 1
+        },
+        {
+          name: "Alex Trebek",
           score: 31,
-          id: 1,
+          id: 2
         },
         {
-          name: "Laurie Hansson",
-          score: 100,
-          id: 2,
-        },
-        {
-          name: "Bob Saget",
-          score: 150,
-          id: 3,
+          name: "Wayne Brady",
+          score: 163,
+          id: 3
         },
       ]
     };
-
-    // this.onScoreChange = this.onScoreChange.bind(this);
-    // this.onPlayerAdd = this.onPlayerAdd.bind(this);
-    // this.onRemovePlayer = this.onRemovePlayer.bind(this);
   }
 
   onScoreChange = (index, delta) => {
-    console.log('onScoreChange', index, delta);
-    // TODO refactor this to create a new state, then set state (rather than modify old state and update)
-    //refactor
-    let newState = [...this.state.players];
-    newState[index].score += delta;
-    // let newScore = this.state.players[index].score;
-    // newScore += delta;
-    // this.state.players[index].score += delta;
+    // console.log('onScoreChange', index, delta);
+
+    const newState = {...this.state};
+    newState.players[index].score += delta;
     this.setState({ newState });
   };
 
   onPlayerAdd = (name) => {
-    console.log('Player added', name);
-    // TODO refactor this to create a new state, then set state (rather than modify old state and update
-    this.state.players.push({
+    // console.log('Player added', name);
+
+    const newState = {...this.state};
+    newState.players.push({
       name: name,
       score: 0,
-      id: InitialData.nextId
+      id: Date.now().toString()
     });
 
-    // refactor of update state
-    // const oldPlayers = this.state.players;
-    // const newPlayers = oldPlayers.push({
-    //   name: name,
-    //   score: 0,
-    //   id: InitialData.nextId
-    // });
-
-    InitialData.nextId += 1;
-    this.setState(this.state);
-    // this.setState({ players: newPlayers });
+    this.setState({ newState });
   };
 
   onRemovePlayer = (index) => {
-    console.log('Remove player', index);
-    // TODO refactor this to create a new state, then set state (rather than modify old state and update
-    // remove the index of the player clicked
-    this.state.players.splice(index, 1);
-    this.setState(this.state);
+    // console.log('Remove player', index);
+
+    const newState = {...this.state};
+    newState.players.splice(index, 1);
+    this.setState({ newState });
   };
 
   render() {
@@ -113,12 +95,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  title: PropTypes.string,
-  initialPlayers: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    score: PropTypes.number.isRequred,
-    id: PropTypes.number.isRequred,
-  })).isRequired
+  title: PropTypes.string
 };
 
 App.defaultProps = {
