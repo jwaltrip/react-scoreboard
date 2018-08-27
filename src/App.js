@@ -45,7 +45,7 @@ class App extends Component {
 
     const newState = {...this.state};
     newState.players[index].score += delta;
-    this.setState({ newState });
+    this.setState(newState);
   };
 
   onPlayerAdd = (name) => {
@@ -58,7 +58,7 @@ class App extends Component {
       id: Date.now().toString()
     });
 
-    this.setState({ newState });
+    this.setState(newState);
   };
 
   onRemovePlayer = (index) => {
@@ -66,7 +66,7 @@ class App extends Component {
 
     const newState = {...this.state};
     newState.players.splice(index, 1);
-    this.setState({ newState });
+    this.setState(newState);
   };
 
   render() {
