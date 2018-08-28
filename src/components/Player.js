@@ -17,18 +17,16 @@ class Player extends Component {
   checkIsWinner = () => {
     // conditional logic to detect if this Player is current winner
     const currentWinnerId = this.props.winner.id;
+    const currentWinnerScore = this.props.winner.score;
+
     const currentId = this.props.id;
+    const currentScore = this.props.score;
 
     console.log(`currentWinnerID: ${currentWinnerId} || currentId: ${currentId}`);
 
     // TODO check if there's a tie
-
-    // const allPlayers = this.props.allPlayers;
-    // allPlayers.forEach((player, idx) => {
-    //
-    // });
-
-    if (currentWinnerId === currentId) {
+      // if (currentWinnerId === currentId) {
+    if (currentScore >= currentWinnerScore) {
       const newState = {...this.state};
       newState.isWinner = true;
       console.log(newState);
@@ -49,7 +47,7 @@ class Player extends Component {
     // this.loadCommentsFromServer();
     // poll backend server for comments every 2 seconds
     if (!this.pollInterval) {
-      this.pollInterval = setInterval(()=> this.checkIsWinner(), 500);
+      // this.pollInterval = setInterval(()=> this.checkIsWinner(), 250);
     }
   }
 

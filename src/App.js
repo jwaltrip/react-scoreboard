@@ -41,14 +41,28 @@ class App extends Component {
         },
       ],
 
-      winner: {
-        id: 3,
-        score: 35,
-        playerArrIndex: 3
-      }
-
-
+      winners: [
+        {
+          name: "",
+          id: 0,
+          score: 0
+        }
+      ]
     };
+    this.pollInterval = null;
+  }
+
+  componentDidMount() {
+    // this.loadCommentsFromServer();
+    // poll backend server for comments every 2 seconds
+    if (!this.pollInterval) {
+      this.pollInterval = setInterval(()=> this.updateWinner(), 100);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.pollInterval) clearInterval(this.pollInterval);
+    this.pollInterval = null;
   }
 
   updateWinnerBadge = (index) => {
@@ -81,6 +95,62 @@ class App extends Component {
     this.setState(newState);
   };
 
+  updateWinner = () => {
+    const newState = {...this.state};
+    const players = newState.players;
+    const winners = newState.winners;
+
+    /* WHITEBOARD
+
+      * Need to loop thru players arr, and find object with highest score (note it's: score & id)
+      * Then check to see if any other players have an equal score (meaning a tie) - (note it's: score & id)
+      * create an object with the player(s) with the highest score
+      * set this object containing the player(s) with the highest score = winners
+
+    */
+
+    // get the highest score of players - using reduce
+    const maxScore = players.reduce((prev, current) => {
+      return (prev.score > current.score) ? prev : current;
+    }).score;
+
+    // get the maxScore player id
+    let maxScoreId = null;
+    let maxScoreIndex = null;
+    players.forEach((player, idx) => {
+      if (player.score === maxScore) {
+        maxScoreId = player.id;
+        maxScoreIndex = idx;
+      }
+    });
+
+    // check to see if any other players === maxScore
+    const areThereTies = players.filter(player => {
+      return (player.score === maxScore);
+    });
+
+    // create newWinners state var
+    const newWinners = [];
+
+    // loop over areThereTies array, and add each object to newWinners
+    areThereTies.forEach((player, idx) => {
+      newWinners.push(player);
+    });
+
+    // setState of winners to newWinners
+    newState.winners = newWinners;
+    this.setState(newState);
+
+    // console.log('newState', newState);
+    // console.log('areThereTies', areThereTies);
+    // console.log('newWinners', newWinners);
+    // console.log('maxScore', maxScore);
+    // console.log('maxScoreId', maxScoreId);
+
+
+
+  };
+
   // these MUST be arrow functions in order to automatically bind 'this'
   onScoreChange = (index, delta) => {
     // console.log('onScoreChange', index, delta);
@@ -88,7 +158,7 @@ class App extends Component {
     const newState = {...this.state};
     newState.players[index].score += delta;
 
-    this.updateWinnerBadge(index);
+    // this.updateWinnerBadge(index);
 
     this.setState(newState);
   };
