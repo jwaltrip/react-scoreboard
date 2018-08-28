@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Counter from './Counter';
 
 // Player component
-// const Player = (props) => {
 class Player extends Component {
   constructor(props) {
     super(props);
@@ -13,41 +12,36 @@ class Player extends Component {
     this.pollInterval = null;
   }
 
-  // returns a winner tag Component
   checkIsWinner = () => {
-    // conditional logic to detect if this Player is current winner
-    const currentWinnerId = this.props.winner.id;
-    const currentWinnerScore = this.props.winner.score;
 
-    const currentId = this.props.id;
-    const currentScore = this.props.score;
+    /* WHITEBOARD
 
-    console.log(`currentWinnerID: ${currentWinnerId} || currentId: ${currentId}`);
+      * get array of current winners
+      * get id of current player component
+      * loop over winners array, and see if current player is in array
+      * if player is in array, then set this.isWinner = true
 
-    // TODO check if there's a tie
-      // if (currentWinnerId === currentId) {
-    if (currentScore >= currentWinnerScore) {
-      const newState = {...this.state};
-      newState.isWinner = true;
-      console.log(newState);
-      this.setState(newState);
-    } else {
-      const newState = {...this.state};
-      newState.isWinner = false;
-      console.log(newState);
-      this.setState(newState);
-    }
-  };
+     */
+    const newState = {...this.state};
 
-  setWinnerTag = () => {
+    const winnersArr = this.props.winners;
+    const instanceId = this.props.id;
+
+    let isWinner = false;
+    winnersArr.forEach(winner => {
+      if (winner.id === instanceId) {
+        isWinner = true;
+      }
+    });
+
+    newState.isWinner = isWinner;
+    this.setState(newState);
 
   };
 
   componentDidMount() {
-    // this.loadCommentsFromServer();
-    // poll backend server for comments every 2 seconds
     if (!this.pollInterval) {
-      // this.pollInterval = setInterval(()=> this.checkIsWinner(), 250);
+      this.pollInterval = setInterval(()=> this.checkIsWinner(), 250);
     }
   }
 

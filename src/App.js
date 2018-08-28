@@ -8,7 +8,7 @@ import AddPlayerForm from "./components/AddPlayerForm";
 /*
 List of components used:
 
-  [] App - stateful
+  [x] App - stateful
   [x] Header - stateless
   [x] Stats - stateless
   [x] Player - stateless
@@ -16,8 +16,6 @@ List of components used:
   [x] AddPlayerForm - stateful
 
  */
-
-// TODO add a highlight marker of some type to point out the winning player
 
 class App extends Component {
   constructor(props) {
@@ -31,12 +29,12 @@ class App extends Component {
         },
         {
           name: "Alex Trebek",
-          score: 31,
+          score: 34,
           id: 2
         },
         {
           name: "Wayne Brady",
-          score: 35,
+          score: 36,
           id: 3
         },
       ],
@@ -53,8 +51,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this.loadCommentsFromServer();
-    // poll backend server for comments every 2 seconds
     if (!this.pollInterval) {
       this.pollInterval = setInterval(()=> this.updateWinner(), 100);
     }
@@ -64,36 +60,6 @@ class App extends Component {
     if (this.pollInterval) clearInterval(this.pollInterval);
     this.pollInterval = null;
   }
-
-  updateWinnerBadge = (index) => {
-    const newState = {...this.state};
-
-    // update this.winnerId
-    const updatedScore = newState.players[index].score;
-    const currentWinnerId = newState.winner.id;
-    const currentWinnerScore = newState.winner.score;
-    const currentWinnerArrIdx = newState.winner.playerArrIndex;
-
-    let newWinnerId = currentWinnerId;
-    let newWinnerScore = currentWinnerScore;
-    let newWinnerArrIdx = currentWinnerArrIdx;
-
-    let playerHighestScore = currentWinnerScore;
-    // get highest score player
-    newState.players.forEach((player, idx) => {
-      if (updatedScore >= currentWinnerScore && index === idx) {
-        newWinnerId = player.id;
-        newWinnerScore = player.score;
-        newWinnerArrIdx = idx;
-      }
-    });
-
-    newState.winner.id = newWinnerId;
-    newState.winner.score = newWinnerScore;
-    newState.winner.playerArrIndex = newWinnerArrIdx;
-
-    this.setState(newState);
-  };
 
   updateWinner = () => {
     const newState = {...this.state};
@@ -133,22 +99,13 @@ class App extends Component {
     const newWinners = [];
 
     // loop over areThereTies array, and add each object to newWinners
-    areThereTies.forEach((player, idx) => {
+    areThereTies.forEach(player => {
       newWinners.push(player);
     });
 
     // setState of winners to newWinners
     newState.winners = newWinners;
     this.setState(newState);
-
-    // console.log('newState', newState);
-    // console.log('areThereTies', areThereTies);
-    // console.log('newWinners', newWinners);
-    // console.log('maxScore', maxScore);
-    // console.log('maxScoreId', maxScoreId);
-
-
-
   };
 
   // these MUST be arrow functions in order to automatically bind 'this'
@@ -157,8 +114,6 @@ class App extends Component {
 
     const newState = {...this.state};
     newState.players[index].score += delta;
-
-    // this.updateWinnerBadge(index);
 
     this.setState(newState);
   };
@@ -200,8 +155,7 @@ class App extends Component {
                 onScoreChange={(delta)=> {this.onScoreChange(index, delta)}}
                 name={player.name}
                 score={player.score}
-                winner={this.state.winner}
-                allPlayers={this.state.players}
+                winners={this.state.winners}
                 id={player.id}
                 key={player.id}
               />
