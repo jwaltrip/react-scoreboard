@@ -50,47 +50,45 @@ class App extends Component {
     this.pollInterval = null;
   }
 
+  // life cycle method - on mount, begins updating the winner state (every 0.1sec)
   componentDidMount() {
     if (!this.pollInterval) {
       this.pollInterval = setInterval(()=> this.updateWinner(), 100);
     }
   }
 
+  // life cycle method - on dismount, remove the interval updating the winner state
   componentWillUnmount() {
     if (this.pollInterval) clearInterval(this.pollInterval);
     this.pollInterval = null;
   }
 
+  // updates the current winning player(s)
+  // function that is called on an interval by the life cycle methods
   updateWinner = () => {
-    const newState = {...this.state};
-    const players = newState.players;
-    const winners = newState.winners;
 
     /* WHITEBOARD
 
-      * Need to loop thru players arr, and find object with highest score (note it's: score & id)
-      * Then check to see if any other players have an equal score (meaning a tie) - (note it's: score & id)
-      * create an object with the player(s) with the highest score
-      * set this object containing the player(s) with the highest score = winners
+      * Need to loop thru players arr, and find object with highest score (note it's: score)
+      * Then check to see if any other players have an equal score (meaning a tie) - (using filter)
+      * create an empty array to hold the newWinners state value
+      * push all the newWinners objs to the newWinners array
+      * setState
 
     */
 
+    // make newState obj
+    const newState = {...this.state};
+    // get platers from current state
+    const players = newState.players;
+
     // get the highest score of players - using reduce
+    // note the .score chained on at the end of func call
     const maxScore = players.reduce((prev, current) => {
       return (prev.score > current.score) ? prev : current;
     }).score;
 
-    // get the maxScore player id
-    let maxScoreId = null;
-    let maxScoreIndex = null;
-    players.forEach((player, idx) => {
-      if (player.score === maxScore) {
-        maxScoreId = player.id;
-        maxScoreIndex = idx;
-      }
-    });
-
-    // check to see if any other players === maxScore
+    // check to see if any other players === maxScore (if there are ties)
     const areThereTies = players.filter(player => {
       return (player.score === maxScore);
     });
@@ -105,6 +103,7 @@ class App extends Component {
 
     // setState of winners to newWinners
     newState.winners = newWinners;
+    // set newState
     this.setState(newState);
   };
 
@@ -133,11 +132,13 @@ class App extends Component {
   };
 
   // these MUST be arrow functions in order to automatically bind 'this'
+  // removes a player from the list of players
   onRemovePlayer = (index) => {
-    // console.log('Remove player', index);
-
+    // create newState var
     const newState = {...this.state};
+    // use splice to remove the player from the players array
     newState.players.splice(index, 1);
+    // set newState
     this.setState(newState);
   };
 

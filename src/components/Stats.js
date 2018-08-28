@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Stats component
+// this component is placed in the header
+// it keeps track of the total number of players, and the total score sum
 const Stats = (props) => {
   // calculate total num of players and sum their point total
   const totalPlayers = props.players.length;
